@@ -1,8 +1,16 @@
 let log = console.log;
-
+game();
+function game(){
+    for(let i=0;i<5;i++){
+    let option = prompt("Rock, paper or scissor?");
+    let c_option = getComputerChoice();
+    option = formatOption(option);
+    log(playRound(option,c_option));
+    }
+}
 
 function getComputerChoice(){
-   const aleatorio = Math.floor(Math.random() * 9);
+   const aleatorio = Math.floor(Math.random()*10);
    if(aleatorio>=0 && aleatorio <=3){
     return 'scissor';
    }
@@ -13,18 +21,21 @@ function getComputerChoice(){
     return 'paper';
    }
 }
-const computerSelection = getComputerChoice();
+function formatOption (text){
+    return text.toLowerCase();
+}
 
-//let sup =  [['rock'>'scissor'],
-            //['paper'>'rock'],            
-            //['scissor'>'paper']]; 
+            ///['rock'>'scissor']
+            ///['paper'>'rock']          
+            ///['scissor'>'paper'] 
 
 function playRound(playerSelection, computerSelection){
+    console.log('computer: '+computerSelection+ ', You: ', playerSelection);
     const p = playerSelection;
     const c = computerSelection;
     const rock = 'rock'; const paper = 'paper'; const scissor = 'scissor';
     if(playerSelection===computerSelection){
-        return 'Empate!';
+        return 'Tie!';
     }else{
         if(p===rock){
             if(c===scissor){
@@ -52,3 +63,4 @@ function playRound(playerSelection, computerSelection){
         }
     }
 }
+
